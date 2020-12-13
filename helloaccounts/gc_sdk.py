@@ -1,5 +1,9 @@
 """Interact with Google Cloud SDK"""
+from google.cloud import storage
 
 
 def interact():
-    print('Hello world!')
+    storage_client = storage.Client(project='hello-accounts')
+    buckets = storage_client.list_buckets()
+    for bucket in buckets:
+        print(bucket.name)
